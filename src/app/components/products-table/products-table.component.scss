@@ -1,0 +1,62 @@
+.logo {
+  height: 50px;
+}
+
+.dot-icon {
+  height: 20px;
+  width: 30px;
+}
+
+.paginator {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.paginator button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: auto;
+  bottom: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #bababa;
+  color: rgb(249, 249, 249);
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  right: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  overflow-x: auto;
+}

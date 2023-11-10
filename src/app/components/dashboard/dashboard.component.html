@@ -1,0 +1,21 @@
+<div class="filter">
+  <form>
+    <input
+      class="input"
+      type="text"
+      (input)="filterResults(filter.value)"
+      placeholder="Filtrar"
+      #filter
+    />
+  </form>
+  <button
+    class="button button-default"
+    type="button"
+    [routerLink]="['/create']"
+  >
+    Agregar
+  </button>
+</div>
+<div>
+  <app-products-table #miHijo></app-products-table>
+</div>

@@ -1,0 +1,45 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+img{
+  padding-top: 10px;
+}
+
+.content {
+  display: flex;
+  margin: 96px auto 32px;
+  padding: 0 16px;
+  max-width: 98%;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}

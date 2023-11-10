@@ -1,0 +1,81 @@
+<div class="container">
+  <h2>Formulario de Registro</h2>
+  <hr />
+  <form [formGroup]="newProduct">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="campo1">ID</label>
+        <input
+          type="text"
+          class="form-control input"
+          formControlName="id"
+          [ngClass]="{'input-error':newProduct.get('id')?.hasError('required')}"
+        />
+        <p *ngIf="newProduct.get('id')?.hasError('required')">ID no valido</p>
+        <p *ngIf="newProduct.get('id')?.hasError('minlength')">Minimo 5 caracteres</p>
+      </div>
+      <div class="form-group">
+        <label for="campo2">Nombre</label>
+        <input
+          type="text"
+          class="form-control input"
+          formControlName="name"
+          [ngClass]="{'input-error':newProduct.get('name')?.hasError('required')}"
+        />
+        <p *ngIf="newProduct.get('name')?.hasError('required')">Valor requerido</p>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="campo3">Descripción</label>
+        <input
+          type="text"
+          class="form-control input"
+          formControlName="description"
+          [ngClass]="{'input-error':newProduct.get('description')?.hasError('required')}"
+        />
+        <p *ngIf="newProduct.get('description')?.hasError('required')">Valor requerido</p>
+      </div>
+      <div class="form-group">
+        <label for="campo4">Logo</label>
+        <input
+          type="text"
+          class="form-control input"
+          formControlName="logo"
+          [ngClass]="{'input-error':newProduct.get('logo')?.hasError('required')}"
+        />
+        <p *ngIf="newProduct.get('logo')?.hasError('required')">Valor requerido</p>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="campo5">Fecha Liberación</label>
+        <input
+          type="text"
+          class="form-control input"
+          formControlName="date_release"
+          [ngClass]="{'input-error':newProduct.get('date_release')?.hasError('required')}"
+        />
+        <p *ngIf="newProduct.get('date_release')?.hasError('required')">Valor requerido</p>
+        <p *ngIf="newProduct.get('date_release')?.hasError('formatDateInvalid')">Formato requerido: dd/MM/yyyy</p>
+      </div>
+      <div class="form-group">
+        <label for="campo6">Fecha Revisión</label>
+        <input
+          type="text"
+          class="form-control input"
+          formControlName="date_revision"
+          [ngClass]="{'input-error':newProduct.get('date_revision')?.hasError('required')}"
+        />
+        <p *ngIf="newProduct.get('date_revision')?.hasError('required')">Valor requerido</p>
+        <p *ngIf="newProduct.get('date_revision')?.hasError('formatDateInvalid')">Formato requerido: dd/MM/yyyy</p>
+      </div>
+    </div>
+    <div class="button-container">
+      <button type="button" class="button button-default" (click)="resetProduct()">Reiniciar</button>
+      <button type="button" class="button button-default" (click)="save()" [disabled]="newProduct.invalid" >
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>

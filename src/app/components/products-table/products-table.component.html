@@ -1,0 +1,66 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Nombre del producto</th>
+        <th>Descripción</th>
+        <th>Fecha de liberación</th>
+        <th>Fecha de reestructuración</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let product of productListFiltered
+            | slice
+              : (currentPage - 1) * productsPerPage
+              : currentPage * productsPerPage
+        "
+      >
+        <td><img class="logo" src="{{ product.logo }}" alt="N/D" /></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ formatDataTime(product.date_release) }}</td>
+        <td>{{ formatDataTime(product.date_revision) }}</td>
+        <td>
+          <div class="dropdown" (mouseleave)="closeDropdown()">
+            <span (mouseenter)="toggleDropdown()" style="cursor: pointer">
+              <img class="dot-icon" [src]="iconPath" alt="Mi Icono" />
+            </span>
+            <div class="dropdown-content" *ngIf="isDropdownVisible">
+              <a [routerLink]="['/edit', product.id]">Editar</a>
+              <a (click)="showModal(product)">Eliminar</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-progress-bar [progress]="progress"></app-progress-bar>
+  <div class="paginator">
+    <button
+      class="button button-secondary"
+      (click)="changePage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+    >
+      Anterior
+    </button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button
+      class="button button-secondary"
+      (click)="changePage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>
+
+<app-modal
+  (delete)="deleteProduct()"
+  (close)="closeModal()"
+  [message]="message"
+  *ngIf="modalVisible"
+></app-modal>
