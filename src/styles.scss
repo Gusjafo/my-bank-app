@@ -91,6 +91,14 @@ body {
 }
 
 /* Estilos generales del input */
+.input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
 .input[type="text"] {
   padding: 10px;
   font-size: 16px;
@@ -120,6 +128,17 @@ body {
 
 .input-success {
   border-color: #2ecc71 !important;
+}
+
+select {
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+option {
+  font-size: large;
+  font-weight:500;
 }
 
 /* Estilos generales de tabla */

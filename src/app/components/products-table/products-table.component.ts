@@ -10,12 +10,14 @@ import { formatDataTimeToVisual } from 'src/app/common/utils';
   styleUrls: ['./products-table.component.scss'],
 })
 export class ProductsTableComponent implements OnInit {
+
   isDropdownVisible: boolean = false;
   iconPath: string = `${ICONS_PATH}ellipsis-vertical-solid.svg`;
   productList: Product[] = [];
   productListFiltered: Product[] = [];
   currentPage: number = 1;
   productsPerPage: number = 5;
+  productsPerPageArray: number[] = [5, 10, 20];
   totalPages: number = 1;
   progress: number = 0;
   modalVisible = false;
@@ -100,4 +102,5 @@ export class ProductsTableComponent implements OnInit {
         product.id.includes(key)
     );
   }
+
 }
