@@ -8,10 +8,10 @@ import { Component, ViewChild } from '@angular/core';
 export class DashboardComponent {
 
   progreso: number = 0;
-  @ViewChild('miHijo') miHijo!: any;
+  @ViewChild('tableChildren') tableChildren!: any;
 
 
   filterResults(key: string) {
-    this.miHijo.filterProducts(key)
+    this.tableChildren.filterProducts(key)
   }
 }

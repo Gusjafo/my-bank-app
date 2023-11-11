@@ -50,7 +50,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## View test coverage percentage 
 
-Run `ng coverage` to view the test coverage percentage. It will create a folder called **coverage**. In this folder you can find an __index.html__ file. Execute this file with any browser to view the test results.
+Run `ng run coverage` to view the test coverage percentage. It will create a folder called **coverage**. In this folder you can find an __index.html__ file. Execute this file with any browser to view the test results.
 
 ## Running end-to-end tests
 

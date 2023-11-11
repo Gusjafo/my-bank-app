@@ -43,14 +43,16 @@ export class FormProductComponent implements OnInit {
 
   getProductById(id: string) {
     const product = this.productsService.getProductById(id);
-    this.newProduct.patchValue({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      logo: product.logo,
-      date_release: formatDataTimeToVisual(product.date_release),
-      date_revision: formatDataTimeToVisual(product.date_revision),
-    });
+    if (product) {
+      this.newProduct.patchValue({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        logo: product.logo,
+        date_release: formatDataTimeToVisual(product.date_release),
+        date_revision: formatDataTimeToVisual(product.date_revision),
+      });
+    }
   }
 
   newProductForm(): void {
