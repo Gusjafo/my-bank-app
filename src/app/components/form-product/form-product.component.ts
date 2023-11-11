@@ -6,7 +6,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import {
   formatVisualToDateTime,
   formatDataTimeToVisual,
-  isDateCorrect,
+  CustomValidations,
 } from 'src/app/common/utils';
 
 @Component({
@@ -27,6 +27,17 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.newProductForm();
+
+    this.newProduct.get('date_release')?.valueChanges.subscribe((value) => {
+      const dateRelease = new Date(value);
+      const dateRevision = new Date(dateRelease);
+      dateRevision.setFullYear(dateRelease.getFullYear() + 1);
+      const formattedDateRevision = formatDataTimeToVisual(dateRevision.toISOString());
+      this.newProduct
+        .get('date_revision')
+        ?.patchValue(formattedDateRevision, { emitEvent: false });
+    });
+
     if (this.route.snapshot.params['id']) {
       this.doEditProduct = true;
       const id = this.route.snapshot.params['id'];
@@ -57,12 +68,47 @@ export class FormProductComponent implements OnInit {
 
   newProductForm(): void {
     this.newProduct = this.fb.group({
-      id: ['', [Validators.required, Validators.minLength(5)]],
-      name: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      id: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(10),
+        ],
+      ],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(100),
+        ],
+      ],
+      description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(200),
+        ],
+      ],
       logo: ['', [Validators.required]],
-      date_release: ['', [Validators.required, isDateCorrect]],
-      date_revision: ['', [Validators.required, isDateCorrect]],
+      date_release: [
+        '',
+        [
+          Validators.required,
+          CustomValidations.isDateCorrect,
+          CustomValidations.isDateBeforeToday,
+        ],
+      ],
+      date_revision: [
+        '',
+        [
+          Validators.required,
+          CustomValidations.isDateCorrect,
+          CustomValidations.isDateBeforeToday,
+        ],
+      ],
     });
   }
 

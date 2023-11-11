@@ -129,6 +129,12 @@ body {
   border-color: #2ecc71 !important;
 }
 
+.input-readonly {
+  background-color: #f0f0f0; /* Puedes cambiar este color según tus preferencias */
+  color: #333; /* Puedes ajustar el color del texto si es necesario */
+}
+
+
 select {
   margin-left: 20px;
   padding: 10px;

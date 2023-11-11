@@ -7,22 +7,25 @@
         <label for="campo1">ID</label>
         <input
           type="text"
-          class="form-control input"
+          class="input"
           formControlName="id"
           [ngClass]="{'input-error':newProduct.get('id')?.hasError('required')}"
         />
         <p *ngIf="newProduct.get('id')?.hasError('required')">ID no valido</p>
-        <p *ngIf="newProduct.get('id')?.hasError('minlength')">Minimo 5 caracteres</p>
+        <p *ngIf="newProduct.get('id')?.hasError('minlength')">Minimo 3 caracteres</p>
+        <p *ngIf="newProduct.get('id')?.hasError('maxlength')">Maximo 10 caracteres</p>
       </div>
       <div class="form-group">
         <label for="campo2">Nombre</label>
         <input
           type="text"
-          class="form-control input"
+          class="input"
           formControlName="name"
           [ngClass]="{'input-error':newProduct.get('name')?.hasError('required')}"
         />
         <p *ngIf="newProduct.get('name')?.hasError('required')">Valor requerido</p>
+        <p *ngIf="newProduct.get('name')?.hasError('minlength')">Minimo 5 caracteres</p>
+        <p *ngIf="newProduct.get('name')?.hasError('maxlength')">Maximo 100 caracteres</p>
       </div>
     </div>
     <div class="form-row">
@@ -30,17 +33,19 @@
         <label for="campo3">Descripción</label>
         <input
           type="text"
-          class="form-control input"
+          class="input"
           formControlName="description"
           [ngClass]="{'input-error':newProduct.get('description')?.hasError('required')}"
         />
         <p *ngIf="newProduct.get('description')?.hasError('required')">Valor requerido</p>
+        <p *ngIf="newProduct.get('description')?.hasError('minlength')">Minimo 10 caracteres</p>
+        <p *ngIf="newProduct.get('description')?.hasError('maxlength')">Maximo 200 caracteres</p>
       </div>
       <div class="form-group">
         <label for="campo4">Logo</label>
         <input
           type="text"
-          class="form-control input"
+          class="input"
           formControlName="logo"
           [ngClass]="{'input-error':newProduct.get('logo')?.hasError('required')}"
         />
@@ -52,23 +57,26 @@
         <label for="campo5">Fecha Liberación</label>
         <input
           type="text"
-          class="form-control input"
+          class="input"
           formControlName="date_release"
           [ngClass]="{'input-error':newProduct.get('date_release')?.hasError('required')}"
         />
         <p *ngIf="newProduct.get('date_release')?.hasError('required')">Valor requerido</p>
         <p *ngIf="newProduct.get('date_release')?.hasError('formatDateInvalid')">Formato requerido: dd/MM/yyyy</p>
+        <p *ngIf="newProduct.get('date_release')?.hasError('datePreviousToday')">Fecha anterior a fecha actual</p>
       </div>
       <div class="form-group">
-        <label for="campo6">Fecha Revisión</label>
+        <label for="campo6" style="color: #4d4d4d">Fecha Revisión</label>
         <input
+          [readonly]="true"
           type="text"
-          class="form-control input"
+          class="input input-readonly"
           formControlName="date_revision"
           [ngClass]="{'input-error':newProduct.get('date_revision')?.hasError('required')}"
         />
         <p *ngIf="newProduct.get('date_revision')?.hasError('required')">Valor requerido</p>
         <p *ngIf="newProduct.get('date_revision')?.hasError('formatDateInvalid')">Formato requerido: dd/MM/yyyy</p>
+        <p *ngIf="newProduct.get('date_revision')?.hasError('datePreviousToday')">Fecha anterior a fecha actual</p>
       </div>
     </div>
     <div class="button-container">

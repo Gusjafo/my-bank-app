@@ -41,19 +41,30 @@ export function formatDataTimeToVisual(date: string): string {
   return response;
 }
 
-/**
- * validacion para fechas
- * @param control
- * @returns { formatDateInvalid: true } | null
- */
-export function isDateCorrect(
-  control: AbstractControl
-): { [key: string]: boolean } | null {
-  const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-
-  if (control.value && !dateRegex.test(control.value)) {
-    return { formatDateInvalid: true };
+export class CustomValidations {
+  static isDateCorrect(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (control.value && !dateRegex.test(control.value)) {
+      return { formatDateInvalid: true };
+    }
+    return null;
   }
 
-  return null;
+  static isDateBeforeToday(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const dateLikeDate = new Date(control.value);
+    const dateToday = new Date();
+
+    dateLikeDate.setHours(0, 0, 0, 0);
+    dateToday.setHours(0, 0, 0, 0);
+
+    if (dateLikeDate < dateToday) {
+      return { datePreviousToday: true };
+    }
+
+    return null;
+  }
 }
