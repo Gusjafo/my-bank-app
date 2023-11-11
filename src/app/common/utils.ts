@@ -55,7 +55,8 @@ export class CustomValidations {
   static isDateBeforeToday(
     control: AbstractControl
   ): { [key: string]: boolean } | null {
-    const dateLikeDate = new Date(control.value);
+    const temp = (control.value).split('/');
+    const dateLikeDate = new Date(temp[2], parseInt(temp[1]) - 1, temp[0]);
     const dateToday = new Date();
 
     dateLikeDate.setHours(0, 0, 0, 0);

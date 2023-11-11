@@ -29,16 +29,18 @@ export class FormProductComponent implements OnInit {
     this.newProductForm();
 
     this.newProduct.get('date_release')?.valueChanges.subscribe((value) => {
-      const temp = value.split('/');
-      const dateRelease = new Date(temp[2], parseInt(temp[1]) - 1, temp[0]);
-      const dateRevision = new Date(dateRelease);
-      dateRevision.setFullYear(dateRelease.getFullYear() + 1);
-      const formattedDateRevision = formatDataTimeToVisual(
-        dateRevision.toISOString()
-      );
-      this.newProduct
-        .get('date_revision')
-        ?.patchValue(formattedDateRevision, { emitEvent: false });
+      if (value.length >= 10) {
+        const temp = value.split('/');
+        const dateRelease = new Date(temp[2], parseInt(temp[1]) - 1, temp[0]);
+        const dateRevision = new Date(dateRelease);
+        dateRevision.setFullYear(dateRelease.getFullYear() + 1);
+        const formattedDateRevision = formatDataTimeToVisual(
+          dateRevision.toISOString()
+        );
+        this.newProduct
+          .get('date_revision')
+          ?.patchValue(formattedDateRevision, { emitEvent: false });
+      }
     });
 
     if (this.route.snapshot.params['id']) {
