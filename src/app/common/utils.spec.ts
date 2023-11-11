@@ -1,7 +1,7 @@
 import {
   formatVisualToDateTime,
   formatDataTimeToVisual,
-  isDateCorrect,
+  CustomValidations,
 } from './utils';
 import { FormControl } from '@angular/forms';
 
@@ -31,7 +31,7 @@ describe('isDateCorrect', () => {
   it('should return null for a valid date', () => {
     const control = new FormControl('12/03/2023');
 
-    const result = isDateCorrect(control);
+    const result = CustomValidations.isDateCorrect(control);
 
     expect(result).toBeNull();
   });
@@ -39,7 +39,7 @@ describe('isDateCorrect', () => {
   it('should return { formatDateInvalid: true } for an invalid date', () => {
     const control = new FormControl('invalid-date');
 
-    const result = isDateCorrect(control);
+    const result = CustomValidations.isDateCorrect(control);
 
     expect(result).toEqual({ formatDateInvalid: true });
   });
@@ -47,7 +47,7 @@ describe('isDateCorrect', () => {
   it('should return null for an empty control value', () => {
     const control = new FormControl('');
 
-    const result = isDateCorrect(control);
+    const result = CustomValidations.isDateCorrect(control);
 
     expect(result).toBeNull();
   });

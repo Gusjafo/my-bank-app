@@ -32,6 +32,12 @@ __for this development, was used:__
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
+## Test results
+
+![coverage](src/assets/test-result/coverage.png)
+![unit-test](src/assets/test-result/unit-test.png)
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -63,3 +69,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Created by
 
 **Gusjafo** / [Github](https://github.com/Gusjafo) / [AppLink](https://my-bank-app-kappa.vercel.app/dashboard)
+
+
+[def]: ruta/de/la/imagen.jpg

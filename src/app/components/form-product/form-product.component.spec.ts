@@ -4,11 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormProductComponent } from './form-product.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
-import {
-  formatVisualToDateTime,
-  formatDataTimeToVisual,
-  isDateCorrect,
-} from 'src/app/common/utils';
 import { Router, ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
