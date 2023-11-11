@@ -55,7 +55,7 @@
     >
       Siguiente
     </button>
-    <select [(ngModel)]="productsPerPage" (input)="calculateTotalPages()" class="input">
+    <select [(ngModel)]="productsPerPage" (input)="getProducts()" class="input">
       <option *ngFor="let productsAmount of productsPerPageArray" [value]="productsAmount">{{productsAmount}}</option>
     </select>
   </div>
