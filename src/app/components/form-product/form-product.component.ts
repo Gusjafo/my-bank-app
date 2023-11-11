@@ -30,7 +30,6 @@ export class FormProductComponent implements OnInit {
     if (this.route.snapshot.params['id']) {
       this.doEditProduct = true;
       const id = this.route.snapshot.params['id'];
-      console.log('id: ', id);
       this.productsService.existProduct(id).subscribe({
         next: (response) => {
           if (response) {
@@ -39,14 +38,11 @@ export class FormProductComponent implements OnInit {
         },
         error: (err) => console.log('Error de servidor: ', err),
       });
-    } else {
-      console.log('pasa por else');
     }
   }
 
   getProductById(id: string) {
     const product = this.productsService.getProductById(id);
-    console.log('product', product);
     this.newProduct.patchValue({
       id: product.id,
       name: product.name,
